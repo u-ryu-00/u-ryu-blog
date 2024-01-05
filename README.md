@@ -1,1 +1,1 @@
-# u._.ryu_blog
+# u-ryu-blog
