@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "genTypes": "supabase gen types typescript --project-id cwmbknpuxfbndurkpmon > src/types/supabase.ts"
+    "genTypes": "supabase gen types typescript --project-id cwmbknpuxfbndurkpmon > src/types/supabase.ts",
+    "login": "supabase login"
   },
   "dependencies": {
     "@supabase/ssr": "^0.0.10",
