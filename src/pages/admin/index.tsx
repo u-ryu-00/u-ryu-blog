@@ -1,3 +1,4 @@
+import CustomButton from '@/components/Button';
 import Input from '@/components/Input';
 import { createClient } from '@/utils/supabase/client';
 import { UserResponse } from '@supabase/supabase-js';
@@ -34,31 +35,24 @@ export default function Admin() {
   }, []);
 
   return (
-    <div className="container mx-auto flex flex-col px-4 pb-20 pt-12">
+    <div className="container flex flex-col pb-20 pt-12">
       {!!userResponse?.data.user ? (
         <div className="flex flex-col gap-2">
-          <div className="flex flex-col gap-2">
-            <div className="mb-8">
-              <b>{userResponse.data.user.email}</b>님으로 로그인하셨습니다.
-            </div>
-            <button
-              type="button"
-              className="w-full rounded-md bg-gray-800 py-2 text-white"
-              onClick={() => router.push('/write')}
-            >
-              글 쓰러가기
-            </button>
-            <button
-              type="button"
-              className="w-full rounded-md bg-gray-800 py-2 text-white"
-              onClick={() => {
-                supabase.auth.signOut();
-                router.push('/');
-              }}
-            >
-              로그아웃
-            </button>
+          <div className="mb-8">
+            <b>{userResponse.data.user.email}</b>님으로 로그인하셨습니다.
           </div>
+          <CustomButton type="button" onClick={() => router.push('/write')}>
+            글 쓰러가기
+          </CustomButton>
+          <CustomButton
+            type="button"
+            onClick={() => {
+              supabase.auth.signOut();
+              router.push('/');
+            }}
+          >
+            로그아웃
+          </CustomButton>
         </div>
       ) : (
         <div className="flex flex-col gap-8">

@@ -1,6 +1,6 @@
+import { useCategories } from '@/utils/hooks';
 import { cn } from '@/utils/style';
 import { createClient } from '@/utils/supabase/client';
-import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { AiFillGithub, AiFillInstagram, AiOutlineClose } from 'react-icons/ai';
 import IconButton from './IconComponent';
@@ -13,13 +13,7 @@ type SidebarProps = {
 const supabase = createClient();
 
 export default function Sidebar({ close, isOpen }: SidebarProps) {
-  const { data: existingCategories } = useQuery({
-    queryKey: ['categories'],
-    queryFn: async () => {
-      const { data } = await supabase.from('Post').select('category');
-      return Array.from(new Set(data?.map((d) => d.category)));
-    },
-  });
+  const { data: existingCategories } = useCategories();
 
   return (
     <div
